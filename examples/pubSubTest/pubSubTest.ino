@@ -1,7 +1,7 @@
 #include <AWS_IOT.h>
 #include <WiFi.h>
 
-// include your personal WiFi and AWS configuration. 
+// подключает файл с WiFi и AWS настройками. 
 #include "config.h"
 
 AWS_IOT hornbill;
@@ -21,16 +21,17 @@ void mySubCallBackHandler (char *topicName, int payloadLen, char *payLoad)
 
 
 void setup() {
+    // установление Serial соединения с компьютером
     Serial.begin(9600);
 
     while (status != WL_CONNECTED)
     {
         Serial.print("Attempting to connect to SSID: ");
         Serial.println(WIFI_SSID);
-        // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+        // соединение с WPA/WPA2 сетью. Нужно изменить если подключаешься к открытой или WEP сети:
         status = WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-        // wait 5 seconds for connection:
+        // ждем 5 секунд установки соединения:
         delay(5000);
     }
 
@@ -70,7 +71,7 @@ void loop() {
         Serial.print("Received Message:");
         Serial.println(rcvdPayload);
     }
-    if(tick >= 5)   // publish to topic every 5seconds
+    if(tick >= 5)   // публикует данные в топик каждые 5 секунд
     {
         tick=0;
         sprintf(payload,"Hello from hornbill ESP32 : %d",msgCount++);
