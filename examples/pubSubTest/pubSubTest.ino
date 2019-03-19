@@ -4,6 +4,7 @@
 // подключает файл с WiFi и AWS настройками. 
 #include "config.h"
 
+// создание объекта класса AWS_IOT - класс соединения с сервером
 AWS_IOT hornbill;
 
 int status = WL_IDLE_STATUS;
@@ -22,7 +23,7 @@ void mySubCallBackHandler (char *topicName, int payloadLen, char *payLoad)
 
 void setup() {
     // установление Serial соединения с компьютером
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     while (status != WL_CONNECTED)
     {
@@ -74,6 +75,7 @@ void loop() {
     if(tick >= 5)   // публикует данные в топик каждые 5 секунд
     {
         tick=0;
+        // сборка строки "payload" с данными для отправки
         sprintf(payload,"Hello from hornbill ESP32 : %d",msgCount++);
         if(hornbill.publish(TOPIC_NAME,payload) == 0)
         {        
