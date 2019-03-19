@@ -1,14 +1,14 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-// WiFi and MQTT configuration 
+// WiFi и MQTT настройки 
 static auto constexpr WIFI_SSID = "YOUR_SSID";
 static auto constexpr WIFI_PASSWORD = "YOUR_PASSWORD";
 static auto constexpr HOST_ADDRESS = "DNS_OF_YOUR_MQTT_ENDPOINT";
 static auto constexpr CLIENT_ID = "CLIENTID";
 static auto constexpr TOPIC_NAME = "some/topic";
 
-// "AWS root CA1 and C2 (RSA)", see
+// "AWS root CA1 и C2 (RSA)", смотри
 // https://docs.aws.amazon.com/iot/latest/developerguide/managing-device-certs.html#server-authentication
 static auto constexpr aws_root_ca_pem = "-----BEGIN CERTIFICATE-----\n\
 MIIDQTCCAimgAwIBAgITBmyfz5m/jAo54vB4ikPmljZbyjANBgkqhkiG9w0BAQsF\
@@ -62,11 +62,11 @@ n749sSmvZ6ES8lgQGVMDMBu4Gon2nL2XA46jCfMdiyHxtN/kHNGfZQIG6lzWE7OE\
 4PsJYGw=\
 -----END CERTIFICATE-----\n";
 
-// "The certificate for this thing"
+// "Сертифика для этой сущности"
 auto constexpr certificate_pem_crt = "-----BEGIN CERTIFICATE-----\n\
 -----END CERTIFICATE-----\n";
 
-// "The private key of the thing". The public key is not needed here.
+// "Приватный ключ сущности". Публичный ключ здесь не нужен.
 auto constexpr private_pem_key = "-----BEGIN RSA PRIVATE KEY-----\n\
 -----END RSA PRIVATE KEY-----\n";
 
